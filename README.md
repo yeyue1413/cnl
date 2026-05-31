@@ -2,6 +2,8 @@
 
 一个为 Minecraft 1.21.11 设计的超能力插件套件，包含 52 种独特的超能力、大逃杀模式游戏、客户端 Mod 按键触发。
 
+> **GitHub 仓库：** [https://github.com/yeyue1413/cnl](https://github.com/yeyue1413/cnl)
+
 ---
 
 ## 组件说明
@@ -42,6 +44,32 @@
 2. 将 `superpower-keys-1.0.0.jar` 放入客户端 `.minecraft/mods/` 目录
 3. 确保同时安装了 Fabric API
 4. 启动游戏
+
+---
+
+## 源码构建
+
+本项目的全部源码已开源，包含在 `source code/` 目录中：
+
+| 组件 | 源码文件 | 构建方式 |
+|------|----------|----------|
+| Abilities 核心插件 | `cnl.zip` | `mvn clean package` |
+| Battle 大逃杀插件 | `battle.zip` | `mvn clean package` |
+| SuperpowerKeysBridge | `SuperpowerKeysBridge.zip` | `mvn clean package` |
+| SuperpowerKeys 客户端 Mod | `SuperpowerKeys.zip` | `./gradlew build` |
+
+### 环境要求
+
+- **JDK 21+**
+- **Maven 3.8+**（构建服务端插件）
+- **Gradle 8.x**（构建客户端 Mod）
+
+### 构建步骤
+
+1. 解压对应组件的源码压缩包
+2. 进入解压后的目录
+3. 执行对应的构建命令
+4. 构建产物位于 `target/`（Maven）或 `build/libs/`（Gradle）目录下
 
 ---
 
@@ -196,7 +224,7 @@ while true; do java -jar $(ls paper-*.jar | head -1) nogui; [ -f restart.flag ] 
 
 ---
 
-## 超能力列表（共 52 种）
+## 超能力列表（共 54 种）
 
 | ID | 名称 | 类型 | 效果描述 |
 |----|------|------|----------|
@@ -252,6 +280,8 @@ while true; do java -jar $(ls paper-*.jar | head -1) nogui; [ -f restart.flag ] 
 | 50 | 雷电法王 | 主动 | 单道闪电（冷却 5 秒）；五雷轰顶（冷却 40 秒） |
 | 51 | 淘矿者 | 被动 | 挖掘掉落矿物：铜 15%，铁/金/青金石/红石 10%，钻石 6%，下界合金 2% |
 | 52 | 哨兵 | 主动 | 召唤炮塔自动攻击 16 格内敌人（造成 2❤伤害），飞行角色双倍伤害，冷却 70 秒 |
+| 53 | 召集者 | 主动 | 技能键将同队队友传送至自己身边（冷却 30 秒） |
+| 54 | 救赎者 | 主动 | 队友死亡后获得其名字的纸，手持纸使用技能定身 10 秒后复活队友（冷却递增：3/5/7... 分钟） |
 
 ---
 
@@ -317,7 +347,7 @@ A: 可以，管理员使用 `/cnl set <ID> [玩家]` 指定即可。
 A: 不冲突。大逃杀模式在超能力基础上增加了圈缩、队伍、胜负判定等机制，普通模式仅使用超能力。
 
 **Q: 这个项目发布源码吗？**  
-A: 不发布源码，仅提供编译好的 Jar 文件。
+A: **发布。** 源码已包含在本仓库的 `source code/` 目录中，支持自行构建和二次开发。
 
 ---
 
